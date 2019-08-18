@@ -1,5 +1,6 @@
 class DiariesController < ApplicationController
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, except: :index
 
   # GET /diaries
   # GET /diaries.json
@@ -62,6 +63,9 @@ class DiariesController < ApplicationController
   end
 
   private
+    def move_to_index
+      redirect_to action: :index unless user_signed_in?
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_diary
       @diary = Diary.find(params[:id])
