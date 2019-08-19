@@ -25,7 +25,8 @@ class DiariesController < ApplicationController
   # POST /diaries
   # POST /diaries.json
   def create
-    @diary = Diary.new(diary_params)
+    # @diary = Diary.new(diary_params)
+    @diary = Diary.new(title: diary_params[:title], body: diary_params[:body], user_id: current_user.id)
 
     respond_to do |format|
       if @diary.save
