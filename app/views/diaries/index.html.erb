@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Diaries</h1>
+<h1>日記一覧</h1>
 
 <table>
   <thead>
@@ -15,10 +15,10 @@
     <% @diaries.each do |diary| %>
       <tr>
         <td><%= diary.title %></td>
-        <td><%= diary.body %></td>
-        <td><%= link_to 'Show', diary %></td>
-        <td><%= link_to 'Edit', edit_diary_path(diary) %></td>
-        <td><%= link_to 'Destroy', diary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# <td><%= diary.body %></td> 
+        <td><%= link_to '詳細', diary %></td>
+        <%# <td><%= link_to 'Edit', edit_diary_path(diary) %></td> 
+        <%# <td><%= link_to 'Destroy', diary, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Diary', new_diary_path %>
+<%= link_to '新規作成', new_diary_path %>

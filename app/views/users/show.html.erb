@@ -15,7 +15,7 @@
       <tr>
         <td><%= diary.title %></td>
         <td><%= diary.body %></td>
-        <td><%= link_to 'Show', diary %></td>
+        <%# <td><%= link_to 'Show', diary %></td> 
         <td><%= link_to 'Edit', edit_diary_path(diary) %></td>
         <td><%= link_to 'Destroy', diary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
