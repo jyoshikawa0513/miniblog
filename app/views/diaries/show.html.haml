@@ -1,0 +1,9 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @diary.title
+%p
+  %strong Body:
+  = @diary.body
+= link_to '編集', edit_diary_path(@diary)
+= link_to '戻る', diaries_path

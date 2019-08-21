@@ -1,0 +1,19 @@
+%p#notice= notice
+%h1 日記一覧
+%table
+  %thead
+    %tr
+      %th タイトル
+      %th 登録日
+      %th 更新日
+      %th 詳細リンク
+  %tbody
+    - @diaries.each do |diary|
+      %tr
+        %td= diary.title
+        %td
+          = diary.created_at
+        %td
+          = diary.updated_at
+        %td= link_to '詳細', diary
+%br/
