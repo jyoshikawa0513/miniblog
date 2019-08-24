@@ -5,5 +5,15 @@
 %p
   %strong Body:
   = @diary.body
+
+%p
+  %strong 登録日時:
+  = @diary.created_at
+
+%p
+  %strong 編集日時:
+  = @diary.updated_at
+
 = link_to '編集', edit_diary_path(@diary)
+|
 = link_to '戻る', diaries_path

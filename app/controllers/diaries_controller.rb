@@ -30,7 +30,7 @@ class DiariesController < ApplicationController
 
     respond_to do |format|
       if @diary.save
-        format.html { redirect_to @diary, notice: 'Diary was successfully created.' }
+        format.html { redirect_to @diary, notice: '日記が新規作成されました１' }
         format.json { render :show, status: :created, location: @diary }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class DiariesController < ApplicationController
   def update
     respond_to do |format|
       if @diary.update(diary_params)
-        format.html { redirect_to @diary, notice: 'Diary was successfully updated.' }
+        format.html { redirect_to @diary, notice: '日記が新しく更新されました！' }
         format.json { render :show, status: :ok, location: @diary }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class DiariesController < ApplicationController
   def destroy
     @diary.destroy
     respond_to do |format|
-      format.html { redirect_to diaries_url, notice: 'Diary was successfully destroyed.' }
+      format.html { redirect_to @diary, notice: '日記が削除されました！' }
       format.json { head :no_content }
     end
   end
