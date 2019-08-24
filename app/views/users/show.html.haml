@@ -1,24 +1,38 @@
+%head
+
+  %style( type="text/css" href="./style.css")
+
+  %link( rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+
+  %script( src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+
+  %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+
 %body
   .contents.row
     %p
       = @nickname
-      さんの日記
-    %table
+      さんの日記一覧
+    
+    %div.waves-effect.waves-light.blue.lighten-2.btn
+      = link_to '新しく日記を書く', new_diary_path, :style=>"color:white;"
+      %i.small.material-icons.right create
+
+    %table.striped
       %thead
         %tr
           %th タイトル
           %th 内容
-          %th 登録日時
           %th 更新日時
       - @diaries.each do |diary|
         %tr
           %td= diary.title
           %td= diary.body
           %td
-            = diary.created_at
-          %td
             = diary.updated_at
-          %td= link_to '編集', edit_diary_path(diary)
-          %td= link_to '削除', diary, method: :delete, data: { confirm: '削除しても構いませんか?' }
-      = link_to '日記を新しく書く', new_diary_path
+          %td.waves-effect.waves-light.blue.lighten-2.btn
+            = link_to '編集', edit_diary_path(diary), :style=>"color:white;"
+          %td.waves-effect.waves-light.blue.lighten-2.btn
+            = link_to '削除', diary, method: :delete, data: { confirm: '削除しても構いませんか?' }, :style=>"color:white;"
+        
       %tbody

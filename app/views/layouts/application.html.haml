@@ -1,25 +1,38 @@
 !!!
 %html
-  %body
-    %header.header
-      .header__bar.row
-        %h1.grid-6
-          %a{:href => "/diaries"} Diary
-        - if user_signed_in?
-          .user_nav.grid-6
-            %span
-              = current_user.nickname
-              %ul.user__info
+  %head
+
+    %style( type="text/css" href="./style.css")
+
+    %link( rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+
+    %script( src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+
+    %body
+      %header
+        %nav.blue.darken-4
+          .nav-wrapper
+            %a.brand-logo(href = "/diaries") - - -  Diary  - - -
+            - if user_signed_in?
+              %ul#nav-mobile.right.hide-on-med-and-down
                 %li
-                  %a{:href => "/users/#{current_user.id}"} マイページ
+                  %a= current_user.nickname
+                %li
+                  = link_to "マイページ", "/users/#{current_user.id}"
+                %li
                   = link_to "ログアウト", destroy_user_session_path, method: :delete
-        - else
-          .grid-6
-            = link_to "ログイン", new_user_session_path, class: 'post'
-            = link_to "新規登録", new_user_registration_path, class: 'post'
-    %title Miniblog
-    = csrf_meta_tags
-    = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = yield
+            - else
+              %ul#nav-mobile.right.hide-on-med-and-down
+                %li
+                  = link_to "ログイン", new_user_session_path, class: 'post'
+                %li
+                  = link_to "新規登録", new_user_registration_path, class: 'post'
+
+      %script{:src => "./app.js", :type => "text/javascript"}
+
+      %title DIARY
+      = csrf_meta_tags
+      = csp_meta_tag
+      -# = stylesheet_link_tag 'application',media: 'all', 'data-turbolinks-track': 'reload'
+      = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+      = yield
