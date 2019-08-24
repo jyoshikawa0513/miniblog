@@ -14,9 +14,9 @@
       = @nickname
       さんの日記一覧
     
-    %div.waves-effect.waves-light.blue.lighten-2.btn
+    %div.waves-effect.waves-light.blue.btn
       = link_to '新しく日記を書く', new_diary_path, :style=>"color:white;"
-      %i.small.material-icons.right create
+      %i.small.material-icons.right today
 
     %table.striped
       %thead
@@ -30,9 +30,11 @@
           %td= diary.body
           %td
             = diary.updated_at
-          %td.waves-effect.waves-light.blue.lighten-2.btn
+          %td.waves-effect.waves-light.blue.btn
             = link_to '編集', edit_diary_path(diary), :style=>"color:white;"
-          %td.waves-effect.waves-light.blue.lighten-2.btn
+            %i.small.material-icons.right edit
+          %td /
+          %td.waves-effect.waves-light.blue.btn
             = link_to '削除', diary, method: :delete, data: { confirm: '削除しても構いませんか?' }, :style=>"color:white;"
-        
-      %tbody
+            %i.small.material-icons.right delete
+    = link_to 'トップ画面に戻る', diaries_path

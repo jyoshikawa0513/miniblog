@@ -1,9 +1,18 @@
+%head
+  %style( type="text/css" href="./style.css")
+
+  %link( rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+
+  %script( src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+
+  %link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+
 %p#notice= notice
 %p
-  %strong Title:
+  %strong タイトル:
   = @diary.title
 %p
-  %strong Body:
+  %strong 内容:
   = @diary.body
 
 %p
@@ -14,6 +23,13 @@
   %strong 編集日時:
   = @diary.updated_at
 
-= link_to '編集', edit_diary_path(@diary)
-|
-= link_to '戻る', diaries_path
+- if user_signed_in?
+  %div.waves-effect.waves-light.blue.btn
+    = link_to '編集', edit_diary_path(@diary), :style=>"color:white;"
+    %i.small.material-icons.right edit
+  ■
+  %div.waves-effect.waves-light.blue.btn
+    = link_to '戻る', diaries_path, :style=>"color:white;"
+    %i.small.material-icons.right home
+- else
+  = link_to '戻る', diaries_path

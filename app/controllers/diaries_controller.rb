@@ -1,6 +1,6 @@
 class DiariesController < ApplicationController
   before_action :set_diary, only: [:show, :edit, :update, :destroy]
-  before_action :move_to_index, except: :index
+  before_action :move_to_index, except: [:index, :show]
 
   # GET /diaries
   # GET /diaries.json
